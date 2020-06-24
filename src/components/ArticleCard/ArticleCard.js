@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
     container: {
         width: '95%',
         height: 200,
+        marginTop: 10,
     },
     image: {
         width: '100%',
@@ -23,14 +24,14 @@ const styles = StyleSheet.create({
     }
 })
 
-const ArticleCard = () => {
+const ArticleCard = ({ imageUrl, title, source, timeago }) => {
     return (
         <View style={styles.container}>
-            <Image source={{ uri: 'https://images.unsplash.com/photo-1592967528387-049114892b49?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3900&q=80' }} style={styles.image} />
-            <Text style={styles.title}>Article</Text>
+            <Image source={{ uri: imageUrl, }} style={styles.image} />
+            <Text style={styles.title}>{title}</Text>
             <View style={styles.bottomTextContainer}>
-                <Text>New York Times</Text>
-                <Text>4 hours ago</Text>
+                <Text>{source}</Text>
+                <Text>{timeago}</Text>
             </View>
         </View>
     )
