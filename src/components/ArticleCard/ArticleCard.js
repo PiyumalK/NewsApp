@@ -18,7 +18,8 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     bottomTextContainer: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     }
 })
 
