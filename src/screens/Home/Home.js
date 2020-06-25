@@ -1,5 +1,7 @@
-import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
+import { View, Text, StyleSheet, FlatList } from 'react-native'
+import { getArticles } from '../../state/news/news.actions'
 import { ArticleCard } from '../../components'
 
 const styles = StyleSheet.create({
@@ -10,17 +12,35 @@ const styles = StyleSheet.create({
     }
 })
 
-const Home = () => {
+const Home = ({ articles, getNewsArticles }) => {
+
+    useEffect(() => {
+        getNewsArticles();
+    }, [getNewsArticles]);
+
+    const renderItem = ({ item }) => (
+        <ArticleCard
+            title={item.title}
+            source={item.source.name}
+            imageUrl={item.urlToImage}
+            publishedAt={item.publishedAt}
+        />
+    )
+
+    const keyExtractor = (item, index) => index.toString();
+
     return (
         <View style={styles.container}>
-            <ArticleCard 
-                imageUrl="https://images.unsplash.com/photo-1592967528387-049114892b49?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3900&q=80"
-                title="News Title"
-                source="ABC"
-                publishedAt="2020-06-24T19:38:14Z"
+            <FlatList
+            data={articles}
+            renderItem={renderItem}
+            keyExtractor={keyExtractor}
+            showsVerticalScrollIndicator={false}
             />
         </View>
     )
 }
 
-export default Home
+const mapStateToProps = ({ news }) => ({ articles: news.articles })
+
+export default connect(mapStateToProps, { getNewsArticles: getArticles })(Home)

@@ -10,7 +10,7 @@ export default (state = initialState, {type, payload}) => {
         case newsActionsTypes.GET_ARTICLES + SUCCESS:
             return {
                 ...state,
-                articles: payload,
+                articles: payload.articles,
             };
         default:
             return state;

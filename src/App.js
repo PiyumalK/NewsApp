@@ -1,9 +1,14 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Provider } from 'react-redux'
 import { Home } from './screens';
+import store from './state/store'
 
 const App = () => {
-  return <Home />;
+  return (
+    <Provider store={store}>
+      <Home />
+    </Provider>
+  );
 };
 
 export default App;
