@@ -17,7 +17,7 @@ const Home = () => {
                 imageUrl="https://images.unsplash.com/photo-1592967528387-049114892b49?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3900&q=80"
                 title="News Title"
                 source="ABC"
-                timeago="4 hours ago"
+                publishedAt="2020-06-24T19:38:14Z"
             />
         </View>
     )

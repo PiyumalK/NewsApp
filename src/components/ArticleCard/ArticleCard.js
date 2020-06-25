@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet, Image } from 'react-native'
+import moment from 'moment'
 import { COLORS } from '../../utils/constants'
 
 const styles = StyleSheet.create({
@@ -24,14 +25,14 @@ const styles = StyleSheet.create({
     }
 })
 
-const ArticleCard = ({ imageUrl, title, source, timeago }) => {
+const ArticleCard = ({ imageUrl, title, source, publishedAt }) => {
     return (
         <View style={styles.container}>
             <Image source={{ uri: imageUrl, }} style={styles.image} />
             <Text style={styles.title}>{title}</Text>
             <View style={styles.bottomTextContainer}>
                 <Text>{source}</Text>
-                <Text>{timeago}</Text>
+                <Text>{moment(publishedAt).fromNow()}</Text>
             </View>
         </View>
     )
